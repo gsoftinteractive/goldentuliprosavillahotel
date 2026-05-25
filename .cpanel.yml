@@ -1,0 +1,13 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/goldhrel/public_html/
+    - /bin/mkdir -p $DEPLOYPATH/assets/css $DEPLOYPATH/assets/js $DEPLOYPATH/config $DEPLOYPATH/includes $DEPLOYPATH/images $DEPLOYPATH/sql
+    - /bin/cp -f *.php $DEPLOYPATH
+    - /bin/cp -f .htaccess $DEPLOYPATH
+    - /bin/cp -f assets/css/*.css $DEPLOYPATH/assets/css/
+    - /bin/cp -f assets/js/*.js   $DEPLOYPATH/assets/js/
+    - /bin/cp -f config/config.php config/db.php $DEPLOYPATH/config/
+    - /bin/cp -f includes/*.php   $DEPLOYPATH/includes/
+    - /bin/cp -f images/*         $DEPLOYPATH/images/
+    - /bin/cp -f sql/*.sql        $DEPLOYPATH/sql/

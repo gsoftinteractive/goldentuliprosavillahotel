@@ -2,7 +2,7 @@
 *.log
 *.cache
 
-# Local overrides
+# Local / production overrides — never committed
 config/config.local.php
 .env
 .env.local
