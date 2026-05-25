@@ -1,0 +1,29 @@
+# Golden Tulip Rosa Villa — Apache config
+
+# Block direct access to sensitive folders
+RedirectMatch 403 ^/config(/|$)
+RedirectMatch 403 ^/includes(/|$)
+RedirectMatch 403 ^/sql(/|$)
+RedirectMatch 403 ^/\.git
+RedirectMatch 403 ^/\.env
+RedirectMatch 403 ^/.+\.docx$
+
+# Pretty 404 (optional)
+ErrorDocument 404 /index.php
+
+# Default index
+DirectoryIndex index.php index.html
+
+# Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Cache assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 30 days"
+    ExpiresByType image/png  "access plus 30 days"
+    ExpiresByType text/css   "access plus 7 days"
+    ExpiresByType application/javascript "access plus 7 days"
+</IfModule>

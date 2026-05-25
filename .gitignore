@@ -1,0 +1,24 @@
+.DS_Store
+*.log
+*.cache
+
+# Local overrides
+config/config.local.php
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+
+# Build / temp
+node_modules/
+vendor/
+*.tmp
+*.swp
+
+# Source artifacts — not for repo
+/Archive.zip
+/coming-soon.html
+/building.jpeg
+/GT Rosa Villa Hotel Information.docx
