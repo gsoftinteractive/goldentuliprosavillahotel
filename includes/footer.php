@@ -44,7 +44,10 @@
     </div>
 
     <div class="footer-bottom">
-        <div>&copy; <?= date('Y') ?> Golden Tulip Rosa Villa Hotel. All rights reserved.</div>
+        <div>
+            <div>&copy; <?= date('Y') ?> Golden Tulip Rosa Villa Hotel. All rights reserved.</div>
+            <div class="footer-credit">Designed by <a href="https://gsoftinteractive.com" target="_blank" rel="noopener">Gsoft Interactive</a></div>
+        </div>
         <div class="footer-bottom-links">
             <a href="#">Privacy</a>
             <a href="#">Terms</a>

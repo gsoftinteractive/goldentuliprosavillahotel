@@ -198,7 +198,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: rotate(-45deg); top: 11
 }
 .hero-content {
     position: relative; z-index: 2;
-    max-width: 1400px; margin: 0 auto; padding: 0 4vw;
+    max-width: 1400px; margin: 0 auto; padding: 0 4vw 240px;
     height: 100%; display: flex; flex-direction: column; justify-content: center;
 }
 .hero h1 {
@@ -569,6 +569,9 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: rotate(-45deg); top: 11
 }
 .footer-bottom-links { display: flex; gap: 22px; }
 .footer-bottom-links a { color: rgba(246,241,231,0.5); }
+.footer-credit { font-size: 11px; color: rgba(246,241,231,0.32); letter-spacing: 0.5px; margin-top: 4px; }
+.footer-credit a { color: rgba(246,241,231,0.5); transition: color 0.25s var(--ease); }
+.footer-credit a:hover { color: var(--gold-light); }
 
 /* ----- Animations on scroll --------------------------------------- */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
@@ -611,7 +614,8 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: rotate(-45deg); top: 11
     .nav-toggle { display: block; }
 
     .hero { min-height: 580px; }
-    .hero-dots, .hero-scroll { bottom: 240px; }
+    .hero-content { padding-bottom: 340px; }
+    .hero-dots, .hero-scroll { bottom: 320px; }
     .booking-bar {
         grid-template-columns: 1fr 1fr;
         bottom: 24px; padding: 20px;
@@ -641,6 +645,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: rotate(-45deg); top: 11
 
 @media (max-width: 480px) {
     .booking-bar { grid-template-columns: 1fr; }
+    .hero-content { padding-bottom: 420px; }
     .hero-actions { flex-direction: column; align-items: stretch; }
     .hero-actions .btn { width: 100%; }
 }
