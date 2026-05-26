@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initDateConstraints();
     initBookingSummary();
+    initGallery();
 });
 
 /* --- Mobile nav toggle ------------------------------------------- */
@@ -137,4 +138,82 @@ function recalcSummary() {
     if (totalInput) totalInput.value = total;
     const nightsInput = form.querySelector('input[name="nights"]');
     if (nightsInput) nightsInput.value = nights;
+}
+
+/* --- Gallery: filters + lightbox --------------------------------- */
+function initGallery() {
+    const grid = document.getElementById('galleryGrid');
+    if (!grid) return;
+
+    const items   = Array.from(grid.querySelectorAll('.gallery-item'));
+    const filters = document.querySelectorAll('.gallery-filter');
+    const lightbox = document.getElementById('lightbox');
+    const imgEl   = lightbox?.querySelector('.lightbox-img');
+    const capEl   = lightbox?.querySelector('.lightbox-caption');
+    const btnClose = lightbox?.querySelector('.lightbox-close');
+    const btnPrev  = lightbox?.querySelector('.lightbox-prev');
+    const btnNext  = lightbox?.querySelector('.lightbox-next');
+
+    let current = 0;
+    let visible = items.slice();
+
+    // Filtering
+    filters.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filters.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const cat = btn.dataset.filter;
+            items.forEach(it => {
+                const show = cat === 'all' || it.dataset.cat === cat;
+                it.classList.toggle('is-hidden', !show);
+            });
+            visible = items.filter(it => !it.classList.contains('is-hidden'));
+        });
+    });
+
+    // Open lightbox on click
+    items.forEach((item) => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            current = visible.indexOf(item);
+            if (current < 0) current = 0;
+            showLightbox(current);
+        });
+    });
+
+    function showLightbox(index) {
+        if (!lightbox || !visible.length) return;
+        if (index < 0) index = visible.length - 1;
+        if (index >= visible.length) index = 0;
+        current = index;
+        const item = visible[current];
+        const src  = item.getAttribute('href');
+        const cap  = item.querySelector('.gallery-caption')?.innerHTML || '';
+        imgEl.src = src;
+        imgEl.alt = item.querySelector('img')?.alt || '';
+        capEl.innerHTML = cap;
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    btnClose?.addEventListener('click', closeLightbox);
+    btnPrev?.addEventListener('click', () => showLightbox(current - 1));
+    btnNext?.addEventListener('click', () => showLightbox(current + 1));
+    lightbox?.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox?.classList.contains('is-open')) return;
+        if (e.key === 'Escape')      closeLightbox();
+        if (e.key === 'ArrowLeft')   showLightbox(current - 1);
+        if (e.key === 'ArrowRight')  showLightbox(current + 1);
+    });
 }

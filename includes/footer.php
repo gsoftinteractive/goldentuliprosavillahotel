@@ -25,6 +25,8 @@
             <a href="dining.php">Dining</a>
             <a href="amenities.php">Amenities</a>
             <a href="meetings.php">Meetings &amp; Events</a>
+            <a href="gallery.php">Gallery</a>
+            <a href="reviews.php">Guest Reviews</a>
             <a href="about.php">About Us</a>
         </div>
 
@@ -61,6 +63,6 @@
     </div>
 </footer>
 
-<script src="assets/js/main.js?v=1"></script>
+<script src="assets/js/main.js?v=2"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@ $transparent_nav = $transparent_nav ?? false;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/style.css?v=3" />
+    <link rel="stylesheet" href="assets/css/style.css?v=4" />
 </head>
 <body class="<?= $transparent_nav ? 'has-transparent-nav' : '' ?>">
 
@@ -53,14 +53,16 @@ $transparent_nav = $transparent_nav ?? false;
         </a>
 
         <nav class="nav-links" id="navLinks">
-            <a href="index.php"   class="nav-link<?= is_active('index.php') ?>">Home</a>
-            <a href="rooms.php"   class="nav-link<?= is_active('rooms.php') . is_active('room.php') ?>">Rooms</a>
-            <a href="dining.php"  class="nav-link<?= is_active('dining.php') ?>">Dining</a>
+            <a href="index.php"     class="nav-link<?= is_active('index.php') ?>">Home</a>
+            <a href="rooms.php"     class="nav-link<?= is_active('rooms.php') . is_active('room.php') ?>">Rooms</a>
+            <a href="dining.php"    class="nav-link<?= is_active('dining.php') ?>">Dining</a>
             <a href="amenities.php" class="nav-link<?= is_active('amenities.php') ?>">Amenities</a>
-            <a href="meetings.php" class="nav-link<?= is_active('meetings.php') ?>">Meetings</a>
-            <a href="about.php"   class="nav-link<?= is_active('about.php') ?>">About</a>
-            <a href="contact.php" class="nav-link<?= is_active('contact.php') ?>">Contact</a>
-            <a href="booking.php" class="btn btn-gold nav-cta">Book Now</a>
+            <a href="meetings.php"  class="nav-link<?= is_active('meetings.php') ?>">Meetings</a>
+            <a href="gallery.php"   class="nav-link<?= is_active('gallery.php') ?>">Gallery</a>
+            <a href="reviews.php"   class="nav-link<?= is_active('reviews.php') ?>">Reviews</a>
+            <a href="about.php"     class="nav-link<?= is_active('about.php') ?>">About</a>
+            <a href="contact.php"   class="nav-link<?= is_active('contact.php') ?>">Contact</a>
+            <a href="booking.php"   class="btn btn-gold nav-cta">Book Now</a>
         </nav>
 
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">

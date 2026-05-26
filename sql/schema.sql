@@ -1,9 +1,9 @@
 -- Golden Tulip Rosa Villa Hotel — Database Schema
--- Run in MySQL: mysql -u root -p < sql/schema.sql
-
-CREATE DATABASE IF NOT EXISTS gt_rosavilla
-  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE gt_rosavilla;
+--
+-- Import notes:
+--   * Shared hosting (cPanel / phpMyAdmin): create the database first via
+--     the hosting panel, select it, then import this file.
+--   * Local dev: create the DB once, then `mysql -u root <dbname> < sql/schema.sql`.
 
 -- Rooms catalog
 DROP TABLE IF EXISTS rooms;
@@ -97,3 +97,38 @@ CREATE TABLE subscribers (
     email       VARCHAR(160) NOT NULL UNIQUE,
     created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Guest reviews / testimonials (new submissions default to approved=0; flip to 1 to publish)
+DROP TABLE IF EXISTS reviews;
+CREATE TABLE reviews (
+    id          INT AUTO_INCREMENT PRIMARY KEY,
+    name        VARCHAR(120) NOT NULL,
+    email       VARCHAR(160) NOT NULL,
+    location    VARCHAR(120) DEFAULT NULL,
+    rating      TINYINT UNSIGNED NOT NULL DEFAULT 5,
+    title       VARCHAR(200) DEFAULT NULL,
+    comment     TEXT NOT NULL,
+    approved    TINYINT(1) NOT NULL DEFAULT 0,
+    created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_approved_created (approved, created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO reviews (name, email, location, rating, title, comment, approved, created_at) VALUES
+('Adaeze O.',   'adaeze@example.com',  'Lagos, Nigeria',          5, 'A serene escape in the heart of Owerri',
+ 'From the warm welcome at reception to the spotless rooms and exquisite dining, every detail at Golden Tulip Rosa Villa felt considered. The staff went out of their way to make our anniversary weekend memorable. We will be back.',
+ 1, '2026-03-12 14:20:00'),
+('Chukwuemeka N.', 'emeka@example.com', 'Port Harcourt, Nigeria',  5, 'Best hotel in Owerri, no question',
+ 'Stayed here on business for a week and the experience was world-class. Quiet location, fast Wi-Fi, comfortable bed, and the breakfast was excellent. The Deluxe Room was beautifully finished and the Bush Bar lounge in the evening is a great touch.',
+ 1, '2026-04-02 09:05:00'),
+('Sarah M.',    'sarah.m@example.com', 'London, United Kingdom',  5, 'Five-star service, warm Nigerian hospitality',
+ 'We were treated like royalty from arrival to checkout. The Ikedu Restaurant has a beautifully curated menu blending continental and African dishes, and the pool area is gorgeous. Thank you to the entire team for an unforgettable stay.',
+ 1, '2026-04-18 18:40:00'),
+('Bode A.',     'bode.a@example.com',  'Abuja, Nigeria',          4, 'Excellent comfort, would recommend',
+ 'Beautiful property and lovely interiors. The rooms are spacious and the staff are very attentive. Slight delay at check-in but otherwise a great experience. Special mention to the concierge for arranging our airport pickup so smoothly.',
+ 1, '2026-04-29 11:10:00'),
+('Tobi & Funmi K.', 'tk@example.com', 'Ibadan, Nigeria',          5, 'Perfect for our honeymoon stay',
+ 'Romantic, calm and tastefully designed. The Executive Suite had its own living area which felt like a private apartment. Breakfast in bed was thoughtfully presented. We could not have picked a better place to start our marriage.',
+ 1, '2026-05-10 08:30:00'),
+('David O.',    'david.o@example.com', 'Houston, USA',             5, 'Truly international standard',
+ 'I travel for work across Africa, Europe and the US, and Golden Tulip Rosa Villa is right up there with the best. Clean, modern, friendly, and the meeting facilities were perfect for the client session I hosted. Highly recommended.',
+ 1, '2026-05-19 16:00:00');
