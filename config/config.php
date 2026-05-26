@@ -26,8 +26,11 @@ if (!defined('SITE_URL'))     define('SITE_URL',   (isset($_SERVER['HTTPS']) && 
 // Contact
 if (!defined('HOTEL_ADDRESS_PH'))   define('HOTEL_ADDRESS_PH',   '152 Tombia Street, GRA Phase 2, Port Harcourt, Rivers State, Nigeria');
 if (!defined('HOTEL_ADDRESS_OW'))   define('HOTEL_ADDRESS_OW',   'Plot 5 Achike Udenwa Estate, New Owerri, Imo State');
+// HOTEL_PHONE_1 = Reservations / WhatsApp (clickable WhatsApp link)
+// HOTEL_PHONE_2 = Front Desk (regular phone)
 if (!defined('HOTEL_PHONE_1'))      define('HOTEL_PHONE_1',      '+234 913 958 6398');
 if (!defined('HOTEL_PHONE_2'))      define('HOTEL_PHONE_2',      '+234 913 958 6397');
+if (!defined('HOTEL_WHATSAPP'))     define('HOTEL_WHATSAPP',     '2349139586398'); // digits only, used in wa.me link
 if (!defined('HOTEL_EMAIL_RES'))    define('HOTEL_EMAIL_RES',    'reservations@goldentuliprosavillahotel.com');
 if (!defined('HOTEL_EMAIL_INFO'))   define('HOTEL_EMAIL_INFO',   'info@goldentuliprosavillahotel.com');
 if (!defined('HOTEL_EMAIL_EVENTS')) define('HOTEL_EMAIL_EVENTS', 'events@goldentuliprosavillahotel.com');
