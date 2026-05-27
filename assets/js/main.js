@@ -16,11 +16,26 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNavToggle() {
     const toggle = document.getElementById('navToggle');
     if (!toggle) return;
-    toggle.addEventListener('click', () => {
+    toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         document.body.classList.toggle('nav-open');
     });
     document.querySelectorAll('.nav-link, .nav-cta').forEach(link => {
         link.addEventListener('click', () => document.body.classList.remove('nav-open'));
+    });
+    // Close when clicking outside the menu (on the dimmed backdrop, hero, etc.)
+    document.addEventListener('click', (e) => {
+        if (!document.body.classList.contains('nav-open')) return;
+        const menu = document.getElementById('navLinks');
+        if (menu && !menu.contains(e.target) && !toggle.contains(e.target)) {
+            document.body.classList.remove('nav-open');
+        }
+    });
+    // Escape key closes too
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && document.body.classList.contains('nav-open')) {
+            document.body.classList.remove('nav-open');
+        }
     });
 }
 
