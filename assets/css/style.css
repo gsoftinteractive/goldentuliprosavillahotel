@@ -136,14 +136,32 @@ h3 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); }
 .logo { display: flex; align-items: center; gap: 14px; }
 .logo-mark {
     flex-shrink: 0;
-    width: 46px; height: 46px;
-    display: grid; place-items: center;
-    border: 1px solid var(--gold); border-radius: 50%;
-    color: var(--gold); font-family: var(--serif); font-size: 20px; font-weight: 600;
-    line-height: 1; letter-spacing: 0;
-    padding-top: 2px;
+    height: 48px; width: auto;
+    display: block;
+    object-fit: contain;
+    /* Logo JPEG has a white background — multiply-blend lets it sit
+       cleanly on the cream nav. On the transparent hero (dark photo)
+       we switch to a normal blend so the dark mark stays visible
+       inside its own white badge. */
+    mix-blend-mode: multiply;
+    transition: filter 0.3s var(--ease);
 }
-.logo-mark.light { color: var(--gold-light); border-color: var(--gold-light); }
+.has-transparent-nav .site-nav .logo-mark {
+    mix-blend-mode: normal;
+    border-radius: 4px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.25);
+}
+.site-nav.scrolled .logo-mark {
+    mix-blend-mode: multiply;
+    box-shadow: none;
+}
+.logo-mark--footer {
+    mix-blend-mode: normal;
+    background: var(--ivory);
+    padding: 6px 8px;
+    border-radius: 4px;
+    height: 44px;
+}
 .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
 .logo-primary {
     font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--night);
@@ -625,7 +643,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: rotate(-45deg); top: 11
     .nav-inner { padding: 14px 4vw; gap: 12px; }
     .logo { gap: 10px; min-width: 0; }
     .logo-text { min-width: 0; }
-    .logo-mark { width: 40px; height: 40px; font-size: 17px; }
+    .logo-mark { height: 38px; }
     .logo-primary { font-size: 14px; letter-spacing: 2px; }
     .logo-secondary { font-size: 8px; letter-spacing: 3px; }
 

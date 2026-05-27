@@ -4,7 +4,7 @@
     <div class="footer-grid">
         <div class="footer-col">
             <div class="footer-brand">
-                <span class="logo-mark light">GT</span>
+                <img src="images/logo.jpeg" class="logo-mark logo-mark--footer" alt="Golden Tulip Rosa Villa Hotel" />
                 <div>
                     <div class="footer-brand-primary">Golden Tulip</div>
                     <div class="footer-brand-secondary">Rosa Villa Hotel</div>

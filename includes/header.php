@@ -14,7 +14,7 @@ $transparent_nav = $transparent_nav ?? false;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/style.css?v=4" />
+    <link rel="stylesheet" href="assets/css/style.css?v=5" />
 </head>
 <body class="<?= $transparent_nav ? 'has-transparent-nav' : '' ?>">
 
@@ -45,7 +45,7 @@ $transparent_nav = $transparent_nav ?? false;
 <header class="site-nav" id="siteNav">
     <div class="nav-inner">
         <a href="index.php" class="logo">
-            <span class="logo-mark">GT</span>
+            <img src="images/logo.jpeg" class="logo-mark" alt="Golden Tulip Rosa Villa Hotel" />
             <span class="logo-text">
                 <span class="logo-primary">Golden Tulip</span>
                 <span class="logo-secondary">Rosa Villa Hotel</span>
