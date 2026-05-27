@@ -80,7 +80,7 @@ include __DIR__ . '/includes/header.php';
 </section>
 
 <section class="section">
-    <div class="container" style="display:grid; grid-template-columns: 1.4fr 1fr; gap:50px;">
+    <div class="container booking-page-grid">
         <div class="reveal">
             <?php if ($errors): ?>
                 <div class="error-box">Please correct the highlighted fields below.</div>

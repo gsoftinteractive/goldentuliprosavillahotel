@@ -43,7 +43,7 @@ include __DIR__ . '/includes/header.php';
 
         <div class="confirm-ref"><?= e($booking['reference']) ?></div>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left;margin:30px 0;">
+        <div class="confirm-details">
             <div><strong style="color:var(--gold-deep);font-size:11px;letter-spacing:2px;text-transform:uppercase;">Room</strong><br><?= e($booking['room_name']) ?></div>
             <div><strong style="color:var(--gold-deep);font-size:11px;letter-spacing:2px;text-transform:uppercase;">Guest</strong><br><?= e($booking['guest_first_name'] . ' ' . $booking['guest_last_name']) ?></div>
             <div><strong style="color:var(--gold-deep);font-size:11px;letter-spacing:2px;text-transform:uppercase;">Check-In</strong><br><?= e(date('D, d M Y', strtotime($booking['check_in']))) ?></div>
