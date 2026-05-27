@@ -670,7 +670,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: rotate(-45deg); top: 11
     .nav-toggle { display: block; }
 
     .hero { min-height: 580px; }
-    .hero-content { padding-bottom: 340px; }
+    .hero-content { padding-top: 130px; padding-bottom: 340px; }
     .hero-dots { bottom: 320px; }
     .hero-scroll { display: none; }
     .booking-bar {
