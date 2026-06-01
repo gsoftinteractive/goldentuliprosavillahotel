@@ -25,7 +25,6 @@ include __DIR__ . '/includes/header.php';
     </div>
 
     <div class="hero-content">
-        <span class="eyebrow light"><span data-hero-eyebrow><?= e($slides[0]['eyebrow']) ?></span></span>
         <h1>
             <span data-hero-title><?= e($slides[0]['title']) ?></span>
             <span class="accent" data-hero-accent><?= e($slides[0]['accent']) ?></span>
