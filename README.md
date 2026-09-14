@@ -12,7 +12,7 @@ Built with vanilla PHP and MySQL — fast, dependency-free, and easy to deploy a
 
 - **Cinematic landing page** — 4-slide auto-rotating hero carousel with the hotel's signature aerial sunset shot
 - **Sticky quick-booking bar** at the bottom of the hero — check-in/out, guests, room type, one click to availability
-- **Four room categories** — Classic, Superior, Deluxe, and Executive Suite, each with their own detail page and gallery
+- **Five room categories** — Classic, Standard, Superior, Deluxe, and Executive Suite, each with their own detail page and gallery
 - **Seamless booking flow** — live total calculation, date-range validation, instant reservation reference
 - **Bank-transfer checkout** — confirmation page shows transfer details, amount due, and a quoted reference number
 - **Contact form** with enquiry persistence
@@ -56,7 +56,7 @@ No Composer, no npm — just PHP and MySQL.
    ```bash
    mysql -u root -h 127.0.0.1 < sql/schema.sql
    ```
-   This creates `gt_rosavilla` with 4 tables (`rooms`, `bookings`, `enquiries`, `subscribers`) and seeds the 4 room categories.
+   This creates `gt_rosavilla` with 4 tables (`rooms`, `bookings`, `enquiries`, `subscribers`) and seeds the 5 room categories.
 
 4. **Configure** — edit [config/config.php](config/config.php) if your DB user/password differs from `root`/empty.
 
@@ -110,11 +110,19 @@ define('BANK_ACCOUNT_NO',   '1234567890');
 ```
 
 ### Adjust room prices
-Run an `UPDATE` against the `rooms` table:
+Prices live in the `rooms` table, not in the PHP files. On the **live** site, open
+cPanel → phpMyAdmin → the site database → **SQL** tab and run:
 ```sql
-UPDATE rooms SET price_ngn = 75000 WHERE slug = 'classic';
+UPDATE rooms SET price_ngn = 85000 WHERE slug = 'classic';
 ```
-Or edit the `INSERT` in [sql/schema.sql](sql/schema.sql) and re-import.
+Slugs: `classic`, `standard`, `superior`, `deluxe`, `executive-suite`.
+
+Rate changes are also kept as dated, re-runnable files in `sql/` (for example
+`sql/2026-09-14-room-rates.sql`) so the live database and the seed stay in step.
+**Never re-import `sql/schema.sql` on the live server** — it drops every table,
+including bookings. Only edit its `INSERT` for fresh installs.
+
+Current rates (14 Sep 2026): Classic ₦85,000 · Standard ₦100,000 · Superior ₦120,000 · Deluxe ₦130,000 · Executive Suite ₦250,000.
 
 ### Hotel contact info
 All addresses, phones, and emails are constants near the top of [config/config.php](config/config.php).
